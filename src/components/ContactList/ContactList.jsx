@@ -1,7 +1,18 @@
 import PropTypes from 'prop-types';
 import css from './ContactList.module.css'
+import { useDispatch, useSelector } from 'react-redux';
+import { getContacts, getFilter } from 'redux/selectors';
+import { removeContact } from 'redux/contactsSlice';
 
-export function ContactList({ contacts, filter, handleDeleteButton }) {
+export function ContactList() {
+    const dispatch = useDispatch();
+    const contacts = useSelector(getContacts);
+    const filter = useSelector(getFilter);
+
+      const handleDeleteButton = (id) => {
+        dispatch(removeContact(id))
+    }
+
     const filteredContacts = contacts.filter(({name}) => name.toLowerCase().includes(filter.toLowerCase()));
 
     return (

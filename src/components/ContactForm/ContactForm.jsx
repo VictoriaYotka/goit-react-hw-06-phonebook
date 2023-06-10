@@ -1,7 +1,31 @@
 import PropTypes from 'prop-types';
 import css from './ContactForm.module.css'
+import { useDispatch, useSelector } from 'react-redux';
+import { addContact } from 'redux/contactsSlice';
+import { getContacts } from 'redux/selectors';
 
-export function ContactForm({handleSubmit}) {
+
+export function ContactForm() {
+
+  const contacts = useSelector(getContacts)
+  const dispatch = useDispatch();
+
+  const handleSubmit = (e) => {
+    const form = e.currentTarget;
+    e.preventDefault();
+  
+      const newName = form.elements.name.value;
+      const newNumber = form.elements.number.value; 
+
+    if(contacts.find(({name}) => name === newName)) {
+      alert (`${newName} is already in contacts`)
+
+    } else {dispatch(addContact({name: newName,
+      number: newNumber}))}
+
+    form.reset()
+  }
+
     return (
         <>
 
