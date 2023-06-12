@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import css from './ContactList.module.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { getContacts, getFilter } from 'redux/selectors';
@@ -22,10 +21,4 @@ export function ContactList() {
             </li>)}
         </ul>
     )
-}
-
-ContactList.propTypes = {
-    contacts: PropTypes.array, 
-    filter: PropTypes.string, 
-    handleDeleteButton: PropTypes.func
 }

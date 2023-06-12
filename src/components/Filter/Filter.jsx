@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import css from './Filter.module.css'
 import { useDispatch } from 'react-redux';
 import { filterContacts } from 'redux/filtersSlice';
@@ -22,8 +21,4 @@ export function Filter() {
         />
   </>
     )
-}
-
-Filter.propTypes = {
-    handleChange: PropTypes.func,
 }
